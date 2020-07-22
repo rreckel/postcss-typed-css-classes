@@ -6,6 +6,7 @@ let selectorParser = require('postcss-selector-parser')
 // can't lazyload because of preconfigured linters from PostCSS plugin template
 let rustGeneratorModule = require('./generators/rust_generator')
 let jsonGeneratorModule = require('./generators/json_generator')
+let scalaGeneratorModule = require('./generators/scala_generator')
 
 /** Exchange generator name from plugin opts for generator instance
  *
@@ -19,6 +20,8 @@ function getDefaultGenerator (generatorName) {
       return rustGeneratorModule.generate
     case 'json':
       return jsonGeneratorModule.generate
+    case 'scala':
+      return scalaGeneratorModule.generate
     default:
       throw new Error(ERROR_PREFIX +
           'default generator ' + generatorName + ' doesn\'t exist!'
